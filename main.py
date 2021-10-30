@@ -3,16 +3,23 @@
 from functions import * 
 import requests
 import os
+import time
 
 clear=os.system("cls")
 import random as rd
 
-rand=rd.randint(1,400)
-varia=str(rand)
+rand1=rd.randint(1,400)
+varia1=str(rand1)
+rand2=rd.randint(1,400)
+varia2=str(rand2)
 
+
+url1 ='https://pokeapi.co/api/v2/pokemon/'+varia1
+url2 ='https://pokeapi.co/api/v2/pokemon/'+varia2
 
      
-def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
+#def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
+def get_pokemon_data1(url):
     pokemon1_id=[]
     pokemon1_name=[]
     pokemon1_abilities=[]
@@ -70,21 +77,50 @@ class Pokemon:
 
 
 
-def crearRegistros(pokemon1_name):
-    primerPokemon=[]
-    segundoPokemon=[]
-    
-    for i in pokemon1_name:
-        primerPokemon.append(i)
-    print("Lista primer pokemon: ",primerPokemon)
-    
-    get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia)
 
-    for i in pokemon1_name:
-        segundoPokemon.append(i)
-    print("Lista segundo pokemon: ",segundoPokemon)
+primerPokemon=[]
+def crearRegistros1(pokemon1_name):
     
+    if len(primerPokemon)==0:
+        for i in pokemon1_name:
+            primerPokemon.append(i)
+        print("Registro de Pokemon #1 agregado satisfactoriamente")
+        time.sleep(1)
+        #print(primerPokemon)
+    else:
+        print("No es posible sobreescribir datos de Pokemon #1")
+        time.sleep(1)  
+        #print("Lista primer pokemon: ",primerPokemon)
+
+segundoPokemon=[]    
+def crearRegistros2(pokemon1_name):
     
+    if len(segundoPokemon)==0:
+        for i in pokemon1_name:
+            segundoPokemon.append(i)
+        print("Registro de Pokemon #2 agregado satisfactoriamente")
+        time.sleep(1)
+        #print(segundoPokemon)
+    else:
+        print("No es posible sobreescribir datos de Pokemon #2")
+        time.sleep(1)    
+
+    
+    #print("Lista segundo pokemon: ",segundoPokemon)
+
+def crearRegistros():
+    crearRegistros1(get_pokemon_data1(url1))
+    #print("Lista primer pokemon: ")
+        
+    crearRegistros2(get_pokemon_data1(url2))
+    #print("Lista segundo pokemon: ")
+    
+def leerRegistros():
+    print(primerPokemon)
+    print(segundoPokemon)
+
+    
+        
 while (True):
     print("Seleccione una de las tareas a realizar:")
     print("1) Pokedex")
@@ -94,15 +130,46 @@ while (True):
     pokeMenu=int(input())
     
     if(pokeMenu==1):
-        crearRegistros(get_pokemon_data1())
-
         
+        print("Seleccione una de las tareas a realizar:\n")
+        print(" 1) Crear registros")
+        print(" 2) Listar datos")
+        print(" 3) Modificar registros")
+        print(" 4) Eliminar datos")
+        print(" 0) SALIR\n")
+        
+        opcMenu=input()
+        
+        if (opcMenu=="1"):
+            crearRegistros()
+            
+        elif (opcMenu=="2"):
+            #Listar Datos
+            leerRegistros()
+            
+            
+        elif (opcMenu=="3"):
+            #Modificar Datos
+            pass
+            
+        elif (opcMenu=="4"):
+            #Eliminar Datos
+            pass
+        elif (opcMenu=="0"):
+            #Salir
+            pass
+        else:
+            pass
+        
+               
+
         
         
     elif(pokeMenu==2):
-
+        print(primerPokemon)
+        print(segundoPokemon)
         input()
-        
+            
     elif(pokeMenu==0):
         #Salir
         break
@@ -111,14 +178,13 @@ while (True):
 
 
 
-
-
+        
 
 
 if __name__ == '__main__':
-    url ='https://pokeapi.co/api/v2/pokemon/'+varia
-    get_pokemon_data1()
-    
-    
+    get_pokemon_data1(url1)
+    print(get_pokemon_data1(url1)) 
+    get_pokemon_data1(url2)
+    print(get_pokemon_data1(url2)) 
     
 
