@@ -13,11 +13,22 @@ varia1=str(rand1)
 rand2=rd.randint(1,400)
 varia2=str(rand2)
 
-
 url1 ='https://pokeapi.co/api/v2/pokemon/'+varia1
 url2 ='https://pokeapi.co/api/v2/pokemon/'+varia2
 
-     
+#Variables separadas de Pokemon 1
+id1=[]
+name1=[]
+abilitie1=[]
+type1=[]
+
+#Variables separadas de Pokemon 2
+id2=[]
+name2=[]
+abilitie2=[]
+type2=[]
+
+ 
 #def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
 def get_pokemon_data1(url):
     pokemon1_id=[]
@@ -50,7 +61,8 @@ def get_pokemon_data1(url):
             for abilities_nest in results:
                 skills = abilities_nest['ability']
                 habilidades=skills.get('name')
-                pokemon1_abilities.append(habilidades)                    
+                pokemon1_abilities.append(habilidades)    
+             
             #print(pokemon1_abilities)
 
             
@@ -66,25 +78,37 @@ def get_pokemon_data1(url):
       
 class Pokemon:
     
-    def __init__(self,nombrePokemon,identificadorPokemon,puntosVidaPokemon,puntoAtaquePokemon,tipoPokemon,debilidad,fortaleza):
-        self.nombre=nombrePokemon  
-        self.id=identificadorPokemon  
-        self.pSalud=puntosVidaPokemon  
-        self.pAtaque=puntoAtaquePokemon
-        self.tipo=tipoPokemon  
-        self.debilidad=debilidad 
-        self.fortaleza=fortaleza
+    def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon):
         
+        self.id=identificadorPokemon
+        self.nombre=nombrePokemon  
+        self.abilities=abilities
+        self.tipo=tipoPokemon  
+        
+
     def mostrarInfoPokemon(self):
-        print (f"1: {self.nombre}2: {self.id} 3: {self.pSalud} 4:{self.pAtaque} 5: {self.tipo} 6: {self.debilidad}7: {self.fortaleza}")
+        print (f"1) Identificador: {self.id} \n2) Nombre:  {self.nombre} \n3) Habilidad:  {self.abilities} \n4) Tipo:  {self.tipo} \n \n")
+
         
         
 primerPokemon=[]
 def crearRegistros1(pokemon1_name):
-    
     if len(primerPokemon)==0:
         for i in pokemon1_name:
             primerPokemon.append(i)
+            id1.append(i)
+            name1.append(i)
+            abilitie1.append(i)
+            type1.append(i)
+        for i in range(3):    
+            id1.pop()
+        for i in range(2):    
+            name1.pop()
+        abilitie1.pop()
+        del name1[0]
+        del abilitie1[0:2]
+        del type1[0:3]
+
         print("Registro de Pokemon #1 agregado satisfactoriamente")
         time.sleep(1)
         #print(primerPokemon)
@@ -93,12 +117,26 @@ def crearRegistros1(pokemon1_name):
         time.sleep(1)  
         #print("Lista primer pokemon: ",primerPokemon)
 
-segundoPokemon=[]    
+segundoPokemon=[] 
 def crearRegistros2(pokemon1_name):
     
     if len(segundoPokemon)==0:
         for i in pokemon1_name:
             segundoPokemon.append(i)
+            id2.append(i)
+            name2.append(i)
+            abilitie2.append(i)
+            type2.append(i)
+        for i in range(3):    
+            id2.pop()
+        for i in range(2):    
+            name2.pop()
+        abilitie2.pop()
+        del name2[0]
+        del abilitie2[0:2]
+        del type2[0:3]
+        
+        
         print("Registro de Pokemon #2 agregado satisfactoriamente")
         time.sleep(1)
         #print(segundoPokemon)
@@ -120,24 +158,37 @@ def leerRegistros():
     if len(primerPokemon)== 0:
         print("Registros de Pokemones vacío. Ingrese datos primero.")
         time.sleep(3)
-        pass
     else:
-        mostrarInfoPokemon()
-        print(primerPokemon)
-        print(segundoPokemon)
-        
+
+         for i in lista:
+            i.mostrarInfoPokemon()
+
             
-Pokemon(primerPokemon)
-Pokemon(segundoPokemon)
-    
 
-
-    
+"""         for i in primerPokemon:
+            print(i) """
+       
+            
+"""         print("Variable global",primerPokemon)
+        print("Variable global",segundoPokemon)
         
+        print(primerPokemon)
+        print(len(primerPokemon)) """
+        
+
+lista=[
+    Pokemon(id1, name1, abilitie1,type1),
+    Pokemon(id2, name2, abilitie2,type2)
+    ]
+
+
+
+
+
 while (True):
-    print("Seleccione una de las tareas a realizar:")
+    print("====MENU PRINCIPAL====")
+    print("\nSeleccione una de las tareas a realizar:")
     print("1) Pokedex")
-    print("2) Duelo Pokemon")
     print("0) Salir \n")
     
     pokeMenu=int(input())
@@ -159,8 +210,8 @@ while (True):
         elif (opcMenu=="2"):
             #Listar Datos
             leerRegistros()
-            
-            
+
+                    
         elif (opcMenu=="3"):
             #Modificar Datos
             pass
@@ -179,10 +230,7 @@ while (True):
         
         
     elif(pokeMenu==2):
-        print(primerPokemon)
-        print(segundoPokemon)
-        input()
-            
+        pass
     elif(pokeMenu==0):
         #Salir
         break

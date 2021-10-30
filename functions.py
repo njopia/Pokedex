@@ -1,7 +1,8 @@
 
 def get_poke(pokemon1_name):
     print("Datos globales: ",pokemon1_name)
-    
+
+ 
 def pokeName(pokemon1_name):
     print("Nombre: ",pokemon1_name[1])
 
