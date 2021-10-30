@@ -74,10 +74,11 @@ class Pokemon:
         self.tipo=tipoPokemon  
         self.debilidad=debilidad 
         self.fortaleza=fortaleza
-
-
-
-
+        
+    def mostrarInfoPokemon(self):
+        print (f"1: {self.nombre}2: {self.id} 3: {self.pSalud} 4:{self.pAtaque} 5: {self.tipo} 6: {self.debilidad}7: {self.fortaleza}")
+        
+        
 primerPokemon=[]
 def crearRegistros1(pokemon1_name):
     
@@ -116,8 +117,20 @@ def crearRegistros():
     #print("Lista segundo pokemon: ")
     
 def leerRegistros():
-    print(primerPokemon)
-    print(segundoPokemon)
+    if len(primerPokemon)== 0:
+        print("Registros de Pokemones vacío. Ingrese datos primero.")
+        time.sleep(3)
+        pass
+    else:
+        mostrarInfoPokemon()
+        print(primerPokemon)
+        print(segundoPokemon)
+        
+            
+Pokemon(primerPokemon)
+Pokemon(segundoPokemon)
+    
+
 
     
         
