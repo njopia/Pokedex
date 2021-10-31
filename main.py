@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from functions import * 
+#from functions import * 
 import requests
 import os
 import time
@@ -87,9 +87,10 @@ class Pokemon:
         
 
     def mostrarInfoPokemon(self):
-        print (f"1) Identificador: {self.id} \n2) Nombre:  {self.nombre} \n3) Habilidad:  {self.abilities} \n4) Tipo:  {self.tipo} \n \n")
+        print (f"1) Pokedex ID: {str(self.id [0][0])} \n2) Nombre: {str(self.nombre [0][0])} \n3) Habilidad:  {str(self.abilities [0][0])} \n4) Tipo:  {str(self.tipo [0][0])} \n \n")
 
-        
+
+    
         
 primerPokemon=[]
 def crearRegistros1(pokemon1_name):
@@ -120,6 +121,7 @@ def crearRegistros1(pokemon1_name):
 segundoPokemon=[] 
 def crearRegistros2(pokemon1_name):
     
+    """ No vean estas proximas lineas . NO EXISTEN """
     if len(segundoPokemon)==0:
         for i in pokemon1_name:
             segundoPokemon.append(i)
@@ -135,7 +137,7 @@ def crearRegistros2(pokemon1_name):
         del name2[0]
         del abilitie2[0:2]
         del type2[0:3]
-        
+        """ Listo ahora pueden seguir viendo """
         
         print("Registro de Pokemon #2 agregado satisfactoriamente")
         time.sleep(1)
@@ -150,6 +152,7 @@ def crearRegistros2(pokemon1_name):
 def crearRegistros():
     crearRegistros1(get_pokemon_data1(url1))
     #print("Lista primer pokemon: ")
+    
         
     crearRegistros2(get_pokemon_data1(url2))
     #print("Lista segundo pokemon: ")
@@ -159,31 +162,14 @@ def leerRegistros():
         print("Registros de Pokemones vacío. Ingrese datos primero.")
         time.sleep(3)
     else:
+        for i in lista:
+            i.mostrarInfoPokemon()           
 
-         for i in lista:
-            i.mostrarInfoPokemon()
-
-            
-
-"""         for i in primerPokemon:
-            print(i) """
-       
-            
-"""         print("Variable global",primerPokemon)
-        print("Variable global",segundoPokemon)
         
-        print(primerPokemon)
-        print(len(primerPokemon)) """
-        
-
 lista=[
     Pokemon(id1, name1, abilitie1,type1),
     Pokemon(id2, name2, abilitie2,type2)
     ]
-
-
-
-
 
 while (True):
     print("====MENU PRINCIPAL====")
@@ -214,11 +200,32 @@ while (True):
                     
         elif (opcMenu=="3"):
             #Modificar Datos
-            pass
+            
+            modificarDatos=int(input("Ingrese id a actualizar"))
+            indice=0
+            for per in lista:
+                if per.id[0][0]==modificarDatos:
+                    per.nombre[0][0]=input("Favor de ingresar el nombre: ")
+                    per.abilities[0][0]=input("Favor de ingresar abilities : ")
+                    per.tipo[0][0]=input("Favor de ingresar tipo ")
+                    indice+=1  
             
         elif (opcMenu=="4"):
-            #Eliminar Datos
-            pass
+            #Eliminar Datos    
+            print("Eliminar Persona:")
+
+            rutELimina=int(input("Favor de ingresar el rut a eliminar: "))
+
+            indice=0
+            for per in lista:
+                if per.id[0][0]==rutELimina:
+                    lista.pop(indice)  
+                    print(f"Los datos de {per.nombre[0][0]} han sido eliminados satisfactoriamente !!")
+                indice+=1
+                
+
+            input()
+
         elif (opcMenu=="0"):
             #Salir
             pass
