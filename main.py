@@ -4,7 +4,7 @@
 import requests
 import os
 import time
-
+from functions import *
 clear=os.system("cls")
 import random as rd
 
@@ -28,6 +28,11 @@ name2=[]
 abilitie2=[]
 type2=[]
 
+#pAtaque
+randAtaque1=rd.randint(5,33)
+randAtaque1=str(randAtaque1)
+randAtaque2=rd.randint(5,33)
+randAtaque2=str(randAtaque2)
  
 #def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
 def get_pokemon_data1(url):
@@ -74,24 +79,18 @@ def get_pokemon_data1(url):
             type_pokemon=type_nest1_1.get('name')
             pokemon1_type.append(type_pokemon)  
             return pokemon1_id, pokemon1_name,pokemon1_abilities,pokemon1_type 
+        
+    #Obtener debilidad del pokemon
+        results = payload.get('abilities', [])
+        if results:
+            for abilities_nest in results:
+                skills = abilities_nest['ability']
+                habilidades=skills.get('name')
+                pokemon1_abilities.append(habilidades)    
+             
+            #print(pokemon1_abilities)        
                 
-      
-class Pokemon:
-    
-    def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon):
-        
-        self.id=identificadorPokemon
-        self.nombre=nombrePokemon  
-        self.abilities=abilities
-        self.tipo=tipoPokemon  
-        
 
-    def mostrarInfoPokemon(self):
-        print (f"1) Pokedex ID: {str(self.id [0][0])} \n2) Nombre: {str(self.nombre [0][0])} \n3) Habilidad:  {str(self.abilities [0][0])} \n4) Tipo:  {str(self.tipo [0][0])} \n \n")
-
-
-    
-        
 primerPokemon=[]
 def crearRegistros1(pokemon1_name):
     if len(primerPokemon)==0:
@@ -167,8 +166,8 @@ def leerRegistros():
 
         
 lista=[
-    Pokemon(id1, name1, abilitie1,type1),
-    Pokemon(id2, name2, abilitie2,type2)
+    Pokemon(id1, name1, abilitie1,type1,randAtaque1,5,50),
+    Pokemon(id2, name2, abilitie2,type2,randAtaque2,10,100)
     ]
 
 while (True):
