@@ -10,7 +10,20 @@
         ** 18 TIPOS DE POKEMON  + ESTRUCTURADOR MAESTRO (POKEMON) **
 """
 
+import random as rd
 
+
+# Contrincante #1
+dueloNombreMaestro1=[]
+dueloNombrePokemon1=[]
+dueloMovimientos1=[]
+dueloVariacionVida1=[] 
+
+# Contrincante #2
+dueloNombreMaestro2=[]
+dueloNombrePokemon2=[]
+dueloMovimientos2=[]
+dueloVariacionVida2=[] 
 
 class Pokemon:
     
@@ -31,6 +44,55 @@ class Pokemon:
     def mostrarInfoPokemon(self):
         print (f"1) Pokedex ID: {str(self.id [0][0])} \n2) Nombre: {str(self.nombre [0][0])} \n3) Habilidad:  {str(self.abilities [0][0])} \n4) Tipo:  {str(self.tipo [0][0])}\n5) Puntos de vida: {self.health} \n6) Puntos de ataque: {self.pAtaque} \n\n")
         
+    def mostrarNombrePokemon(self):
+        print(f"Nombre: {str(self.nombre[0][0])}")
+
+    def menuDueloPokemon(self):
+        
+        maestro1=input(f"Ingrese nombre de maestro Pokemon N°1:  ")
+        maestro2=input(f"Ingrese nombre de maestro Pokemon N°2:  ")
+        dueloNombreMaestro1.append(maestro1)
+        dueloNombreMaestro2.append(maestro2)
+           
+        print("Sorteo elección de Pokemon y comienzo de partida:")
+           
+        
+        coinChoice=int(input("Maestro 1: Presiona 1 para lanzar moneda"))
+        if coinChoice==1:
+            coin1=rd.randint(1,100)
+            print(f"Maestro 1: Tu número es el {coin1}")
+        coinChoice=int(input("Maestro 2: Presiona 1 para lanzar moneda"))
+        if coinChoice==1:
+            coin2=rd.randint(1,100)
+            print(f"Maestro 1: Tu número es el {coin2}")
+            
+        if coin1 > coin2:
+            print("Maestro 1 ha ganado \n Seleccione Pokemon a utilizar: ")
+                #Nombre pokemones
+            opcMenu=int(input()) 
+            if (opcMenu==1):
+                dueloNombrePokemon1.append(str(self.nombre[0][0]))
+                print(dueloNombrePokemon1)
+            elif (opcMenu==2):
+                dueloNombrePokemon2.append(str(self.nombre[0][0]))
+                print(dueloNombrePokemon2)
+        else:
+            print("Maestro 2 ha ganado \n Seleccione Pokemon a utilizar: ")
+                #Nombre pokemones
+            opcMenu=int(input()) 
+            if (opcMenu==1):
+                dueloNombrePokemon2.append(str(self.nombre[0][0]))
+                print(dueloNombrePokemon1)
+            elif (opcMenu==2):
+                dueloNombrePokemon1.append(str(self.nombre[0][0]))
+                print(dueloNombrePokemon2)
+            
+            
+        
+        
+        
+                            
+            
 class tipoNormal(Pokemon): #1
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, MegaGolpe):
         super().__init__(identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza)

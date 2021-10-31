@@ -33,7 +33,9 @@ randAtaque1=rd.randint(5,33)
 randAtaque1=str(randAtaque1)
 randAtaque2=rd.randint(5,33)
 randAtaque2=str(randAtaque2)
- 
+
+
+
 #def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
 def get_pokemon_data1(url):
     pokemon1_id=[]
@@ -79,17 +81,7 @@ def get_pokemon_data1(url):
             type_pokemon=type_nest1_1.get('name')
             pokemon1_type.append(type_pokemon)  
             return pokemon1_id, pokemon1_name,pokemon1_abilities,pokemon1_type 
-        
-    #Obtener debilidad del pokemon
-        results = payload.get('abilities', [])
-        if results:
-            for abilities_nest in results:
-                skills = abilities_nest['ability']
-                habilidades=skills.get('name')
-                pokemon1_abilities.append(habilidades)    
-             
-            #print(pokemon1_abilities)        
-                
+         
 
 primerPokemon=[]
 def crearRegistros1(pokemon1_name):
@@ -170,16 +162,21 @@ lista=[
     Pokemon(id2, name2, abilitie2,type2,randAtaque2,10,100)
     ]
 
+     
+            
+
 while (True):
+    clear
     print("====MENU PRINCIPAL====")
     print("\nSeleccione una de las tareas a realizar:")
     print("1) Pokedex")
+    print("2) Duelo Pokemon")
     print("0) Salir \n")
     
     pokeMenu=int(input())
     
     if(pokeMenu==1):
-        
+        clear
         print("Seleccione una de las tareas a realizar:\n")
         print(" 1) Crear registros")
         print(" 2) Listar datos")
@@ -231,21 +228,25 @@ while (True):
         else:
             pass
         
-               
-
-        
-        
+                   
+      
     elif(pokeMenu==2):
-        pass
+        counter=1
+        for i in lista:
+            if counter==1:
+                i.menuDueloPokemon()
+            counter+=1
+        else:
+            continue
+
+
+
     elif(pokeMenu==0):
         #Salir
         break
 
 
 
-
-
-        
 
 
 if __name__ == '__main__':
