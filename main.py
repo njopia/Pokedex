@@ -28,18 +28,21 @@ name2=[]
 abilitie2=[]
 type2=[]
  
-
 #pAtaque
+
 randAtaque1=rd.randint(5,33)
-randAtaque1=str(randAtaque1)
+randAtaque1=int(randAtaque1)
 randAtaque2=rd.randint(5,33)
-randAtaque2=str(randAtaque2)
+randAtaque2=int(randAtaque2)
+
 
 entrenador1=[]
 entrenador2=[]
 coin1=0
 coin2=0
 
+select1=0
+select2=0
 loko1=[]
 loko2=[]
 dueloLista1=Pokemon(id1,name1,abilitie1,type1,randAtaque1,6,7)
@@ -198,14 +201,16 @@ def menuDueloPokemon():
         coinChoice=int(input("Maestro 2: Presiona 1 para lanzar moneda"))
         if coinChoice==1:
             coin2=rd.randint(1,100)
-            print(f"Maestro 1: Tu número es el {coin2}")
+            print(f"Maestro 2: Tu número es el {coin2}")
         time.sleep(2)
         os.system("cls")    
         if coin1 > coin2:
-            print("Maestro 1 ha ganado \nSeleccione Pokemon a utilizar: ")
+            
+            #MAESTRO 1
+            print("Maestro 1 ha ganado \nSeleccione Pokemon a utilizar: \n")
             coin1=999
-            print(f"1) {str(name1[0][0])}")
-            print(f"2) {str(name2[0][0])}")
+            print(f"1) {str(name1[0][0])} // ({str(dueloLista1.tipo[0][0])})")
+            print(f"2) {str(name2[0][0])} // ({str(dueloLista2.tipo[0][0])})")
             
             opcMenu=int(input())
                 
@@ -218,28 +223,33 @@ def menuDueloPokemon():
                 
         else:
             
+            #MAESTRO 2
             os.system("cls")
             print("Maestro 2 ha ganado \nSeleccione Pokemon a utilizar: ")
             coin2=999
-            print(f"1) {str(name1[0][0])}")
-            print(f"2) {str(name2[0][0])}")
+            print(f"1) {str(name1[0][0])} ({str(dueloLista1.tipo[0][0])})")
+            print(f"2) {str(name2[0][0])} ({str(dueloLista2.tipo[0][0])})")
+            
             
             opcMenu=int(input())    
             if (opcMenu==1):
-
+                global select1
                 print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}")
+                select1=1
                 
             elif (opcMenu==2):
-
+                global select2
                 print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista2.nombre[0][0])} del tipo {str(dueloLista2.tipo[0][0])}")
+                select2=1
+                
             
-        cvarDueloCoach1=str(nomentrenador1.loko1)    
-        cvarDueloID1=str(dueloLista1.id[0][0])
-        cvarDueloNombrePokemon1=str(dueloLista1.nombre[0][0])
-        cvarDueloHabilidad1=str(dueloLista1.abilities[0][0])
-        cvarDueloTipo1=str(dueloLista1.tipo[0][0])
-        cvarDueloAtaque1=str(dueloLista1.pAtaque)
-        cvarDueloDebilidad1=str(dueloLista1.debilidad)
+        cvarDueloCoach1=str(nomentrenador1.loko1)    #DatosDuelo.nombreEntrenador
+        cvarDueloID1=str(dueloLista1.id[0][0])       #Pokemon.IdentificadorPokemon
+        cvarDueloNombrePokemon1=str(dueloLista1.nombre[0][0]) #Pokemon.nombrePokemon
+        cvarDueloHabilidad1=str(dueloLista1.abilities[0][0])  #Pokemon.abilities
+        cvarDueloTipo1=str(dueloLista1.tipo[0][0])  #Pokemon.tipoPokemon
+        cvarDueloAtaque1=str(dueloLista1.pAtaque)   #Pokemon.pAtaque
+        cvarDueloDebilidad1=str(dueloLista1.debilidad) #Pokemon.de
         cvarDueloFortaleza1=str(dueloLista1.fortaleza)
         
         cvarDueloCoach2=str(nomentrenador2.loko2)   
@@ -251,27 +261,114 @@ def menuDueloPokemon():
         cvarDueloDebilidad2=str(dueloLista2.debilidad)
         cvarDueloFortaleza2=str(dueloLista2.fortaleza)
         if coin1==999: #Si gana el entrenador 1
+            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
+            if begin==1:
+                if (opcMenu==1):
+                    
+                        while dueloLista1.health >=1 or dueloLista2.health >=1:
+                            random1_1_1=int(rd.randint(5,33))
+                            random1_1_2=int(rd.randint(5,33))
+                            
+                            input("MAESTRO 1: Presione una tecla para ATACAR")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_1_1} puntos de daño")
+                                dueloLista2.health=dueloLista2.health-random1_1_1
+                                
+                            input("MAESTRO 2: Presione una tecla para ATACAR")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_1_2} puntos de daño")
+                                dueloLista1.health=dueloLista1.health-random1_1_2
+                                                                  
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                                time.sleep(3)
+                                break    
+                        
+                        
+                else:
+                        while dueloLista1.health >=1 or dueloLista2.health >=1:
+                            random1_2_1=int(rd.randint(5,33))
+                            random1_2_2=int(rd.randint(5,33))
+                            
+                            input("MAESTRO 1: Presione una tecla para ATACAR")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_2_1} puntos de daño")
+                                dueloLista1.health=dueloLista1.health-random1_2_1
+                                
+                            input("MAESTRO 2: Presione una tecla para ATACAR")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_2_2} puntos de daño")
+                                dueloLista2.health=dueloLista2.health-random1_2_2
+                                                                  
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                                time.sleep(3)
+                                break    
+                        
+        elif coin2==999: #Si gana el entrenador 2
+            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
 
-            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
             if begin==1:
-                if (opcMenu==1):
-                    print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {randAtaque2} puntos de daño")
-                else:
-                    print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {randAtaque2} puntos de daño")
-            
-        
-        else: #Si gana el entrenador 2
-            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
-            if begin==1:
-                if (opcMenu==1):
-                    print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {randAtaque1} puntos de daño")
-                else:
-                    print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {randAtaque2} puntos de daño")
+                if select1==1:
+                    
+                    while dueloLista1.health >=1 or dueloLista2.health >=1:
+                        random2_1_1=int(rd.randint(5,33))
+                        random2_1_2=int(rd.randint(5,33))
+                        input("MAESTRO 2: Presione una tecla para ATACAR")
+                        print("PRINT 2-1")
+                        if input:
+                            print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_1_1} puntos de daño")
+                            dueloLista2.health=dueloLista2.health-random2_1_1
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                                time.sleep(3)
+                                break    
+                                
+                        input("MAESTRO 1: Presione una tecla para ATACAR")
+                        if input:
+                            print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_1_2} puntos de daño")
+                            dueloLista1.health=dueloLista1.health-random2_1_2
+                                                                  
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                                time.sleep(3)
+                                break    
+                        
+                        
+                elif select2==1:
+                    while dueloLista1.health >=1 or dueloLista2.health >=1:
+                        random2_2_1=int(rd.randint(5,33))
+                        random2_2_2=int(rd.randint(5,33))
+                        input("MAESTRO 2: Presione una tecla para ATACAR")
+                        print("PRINT2-2")
+                        if input:
+                            print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_2_1} puntos de daño")
+                            dueloLista1.health=dueloLista1.health-random2_2_1
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                                time.sleep(3)
+                                break    
+                                                      
+                        input("MAESTRO 1: Presione una tecla para ATACAR")
+                        if input:
+                            print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_2_2} puntos de daño")
+                            dueloLista2.health=dueloLista2.health-random2_2_2
+                                                                  
+                        if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                            print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                            print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+                            time.sleep(3)
+                            break    
+
 
 os.system("cls")    
 while (True):
-    print("Primer pokemon", primerPokemon)
-    print("Segundo Pokemon",segundoPokemon)
+
     print("====MENU PRINCIPAL====")
     print("\nSeleccione una de las tareas a realizar:")
     print("1) Pokedex")

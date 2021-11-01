@@ -36,7 +36,7 @@ class Pokemon:
         self.nombre=nombrePokemon  # Nombre
         self.abilities=abilities #Habilidades
         self.tipo=tipoPokemon  #Tipo de Pokemon
-        self.health=100
+        self.health=int(100)
         self.pAtaque=pAtaque
         self.debilidad=debilidad
         self.fortaleza=fortaleza
