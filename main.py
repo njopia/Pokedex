@@ -5,7 +5,6 @@ import requests
 import os
 import time
 from functions import *
-clear=os.system("cls")
 import random as rd
 
 rand1=rd.randint(1,400)
@@ -17,6 +16,7 @@ url1 ='https://pokeapi.co/api/v2/pokemon/'+varia1
 url2 ='https://pokeapi.co/api/v2/pokemon/'+varia2
 
 #Variables separadas de Pokemon 1
+
 id1=[]
 name1=[]
 abilitie1=[]
@@ -27,6 +27,7 @@ id2=[]
 name2=[]
 abilitie2=[]
 type2=[]
+ 
 
 #pAtaque
 randAtaque1=rd.randint(5,33)
@@ -34,6 +35,17 @@ randAtaque1=str(randAtaque1)
 randAtaque2=rd.randint(5,33)
 randAtaque2=str(randAtaque2)
 
+entrenador1=[]
+entrenador2=[]
+coin1=0
+coin2=0
+
+loko1=[]
+loko2=[]
+dueloLista1=Pokemon(id1,name1,abilitie1,type1,randAtaque1,6,7)
+dueloLista2=Pokemon(id2,name2,abilitie2,type2,randAtaque2,6,7)
+nomentrenador1=datosDuelo(loko1,name1)
+nomentrenador2=datosDuelo(loko2, name2)
 
 
 #def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
@@ -102,11 +114,11 @@ def crearRegistros1(pokemon1_name):
         del type1[0:3]
 
         print("Registro de Pokemon #1 agregado satisfactoriamente")
-        time.sleep(1)
+        time.sleep(2)
         #print(primerPokemon)
     else:
         print("No es posible sobreescribir datos de Pokemon #1")
-        time.sleep(1)  
+        time.sleep(2)  
         #print("Lista primer pokemon: ",primerPokemon)
 
 segundoPokemon=[] 
@@ -131,23 +143,25 @@ def crearRegistros2(pokemon1_name):
         """ Listo ahora pueden seguir viendo """
         
         print("Registro de Pokemon #2 agregado satisfactoriamente")
-        time.sleep(1)
+        time.sleep(2)
         #print(segundoPokemon)
     else:
+
         print("No es posible sobreescribir datos de Pokemon #2")
-        time.sleep(1)    
+        time.sleep(2)    
 
     
     #print("Lista segundo pokemon: ",segundoPokemon)
 
 def crearRegistros():
+
     crearRegistros1(get_pokemon_data1(url1))
     #print("Lista primer pokemon: ")
     
-        
     crearRegistros2(get_pokemon_data1(url2))
     #print("Lista segundo pokemon: ")
-    
+    os.system("cls")
+
 def leerRegistros():
     if len(primerPokemon)== 0:
         print("Registros de Pokemones vacío. Ingrese datos primero.")
@@ -162,21 +176,114 @@ lista=[
     Pokemon(id2, name2, abilitie2,type2,randAtaque2,10,100)
     ]
 
-     
-            
 
+
+def menuDueloPokemon():
+        os.system("cls")
+        maestro1=input(f"Ingrese nombre de maestro Pokemon N°1:  ")
+        os.system("cls")
+        maestro2=input(f"Ingrese nombre de maestro Pokemon N°2:  ")
+        nomentrenador1.loko1=maestro1
+        nomentrenador2.loko2=maestro2
+
+        os.system("cls")   
+        print("Sorteo elección de Pokemon y comienzo de partida:\n")
+           
+        coinChoice=int(input("Maestro 1: Presiona 1 para lanzar moneda"))
+        if coinChoice==1:
+            coin1=rd.randint(1,100)
+            print(f"Maestro 1: Tu número es el {coin1}")
+        time.sleep(2)   
+        os.system("cls")    
+        coinChoice=int(input("Maestro 2: Presiona 1 para lanzar moneda"))
+        if coinChoice==1:
+            coin2=rd.randint(1,100)
+            print(f"Maestro 1: Tu número es el {coin2}")
+        time.sleep(2)
+        os.system("cls")    
+        if coin1 > coin2:
+            print("Maestro 1 ha ganado \nSeleccione Pokemon a utilizar: ")
+            coin1=999
+            print(f"1) {str(name1[0][0])}")
+            print(f"2) {str(name2[0][0])}")
+            
+            opcMenu=int(input())
+                
+            if (opcMenu==1):
+                print(f"El entrenador N°1 {nomentrenador1.loko1} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}" )     
+                
+            elif (opcMenu==2):
+                print(f"El entrenador N°1 {nomentrenador1.loko1} ha elegido el Pokemon : {str(dueloLista2.nombre[0][0])} del tipo {str(dueloLista2.tipo[0][0])}")
+                          
+                
+        else:
+            
+            os.system("cls")
+            print("Maestro 2 ha ganado \nSeleccione Pokemon a utilizar: ")
+            coin2=999
+            print(f"1) {str(name1[0][0])}")
+            print(f"2) {str(name2[0][0])}")
+            
+            opcMenu=int(input())    
+            if (opcMenu==1):
+
+                print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}")
+                
+            elif (opcMenu==2):
+
+                print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista2.nombre[0][0])} del tipo {str(dueloLista2.tipo[0][0])}")
+            
+        cvarDueloCoach1=str(nomentrenador1.loko1)    
+        cvarDueloID1=str(dueloLista1.id[0][0])
+        cvarDueloNombrePokemon1=str(dueloLista1.nombre[0][0])
+        cvarDueloHabilidad1=str(dueloLista1.abilities[0][0])
+        cvarDueloTipo1=str(dueloLista1.tipo[0][0])
+        cvarDueloAtaque1=str(dueloLista1.pAtaque)
+        cvarDueloDebilidad1=str(dueloLista1.debilidad)
+        cvarDueloFortaleza1=str(dueloLista1.fortaleza)
+        
+        cvarDueloCoach2=str(nomentrenador2.loko2)   
+        cvarDueloID2=str(dueloLista2.id[0][0])
+        cvarDueloNombrePokemon2=str(dueloLista2.nombre[0][0])
+        cvarDueloHabilidad2=str(dueloLista2.abilities[0][0])
+        cvarDueloTipo2=str(dueloLista2.tipo[0][0])
+        cvarDueloAtaque2=str(dueloLista2.pAtaque)
+        cvarDueloDebilidad2=str(dueloLista2.debilidad)
+        cvarDueloFortaleza2=str(dueloLista2.fortaleza)
+        if coin1==999: #Si gana el entrenador 1
+
+            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
+            if begin==1:
+                if (opcMenu==1):
+                    print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {randAtaque2} puntos de daño")
+                else:
+                    print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {randAtaque2} puntos de daño")
+            
+        
+        else: #Si gana el entrenador 2
+            begin=int(input("Presione la tecla 1 para comenzar el ataque"))
+            if begin==1:
+                if (opcMenu==1):
+                    print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {randAtaque1} puntos de daño")
+                else:
+                    print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {randAtaque2} puntos de daño")
+
+os.system("cls")    
 while (True):
-    clear
+    print("Primer pokemon", primerPokemon)
+    print("Segundo Pokemon",segundoPokemon)
     print("====MENU PRINCIPAL====")
     print("\nSeleccione una de las tareas a realizar:")
     print("1) Pokedex")
     print("2) Duelo Pokemon")
     print("0) Salir \n")
     
+
+    
     pokeMenu=int(input())
     
     if(pokeMenu==1):
-        clear
+        os.system("cls")
         print("Seleccione una de las tareas a realizar:\n")
         print(" 1) Crear registros")
         print(" 2) Listar datos")
@@ -187,40 +294,47 @@ while (True):
         opcMenu=input()
         
         if (opcMenu=="1"):
+            os.system("cls")
             crearRegistros()
-            
+
         elif (opcMenu=="2"):
-            #Listar Datos
+            os.system("cls")
             leerRegistros()
 
                     
         elif (opcMenu=="3"):
+            os.system("cls")
             #Modificar Datos
-            
-            modificarDatos=int(input("Ingrese id a actualizar"))
+            for i in lista:
+                i.mostrarInfoPokemon()
+            modificarDatos=int(input("Ingrese ID de POKEDEX a actualizar"))
             indice=0
             for per in lista:
                 if per.id[0][0]==modificarDatos:
                     per.nombre[0][0]=input("Favor de ingresar el nombre: ")
                     per.abilities[0][0]=input("Favor de ingresar abilities : ")
                     per.tipo[0][0]=input("Favor de ingresar tipo ")
+                    per.tipo[0][0]=input("Favor de ingresar Punto Ataque ")
                     indice+=1  
-            
+            os.system("cls")
         elif (opcMenu=="4"):
+            os.system("cls")
+            leerRegistros()
             #Eliminar Datos    
             print("Eliminar Persona:")
 
-            rutELimina=int(input("Favor de ingresar el rut a eliminar: "))
+            idELimina=int(input("Ingrese ID de POKEDEX a eliminar: "))
 
             indice=0
             for per in lista:
-                if per.id[0][0]==rutELimina:
+                if per.id[0][0]==idELimina:
                     lista.pop(indice)  
                     print(f"Los datos de {per.nombre[0][0]} han sido eliminados satisfactoriamente !!")
                 indice+=1
                 
-
-            input()
+            delList2=segundoPokemon.clear()
+            time.sleep(3)
+            os.system("cls")
 
         elif (opcMenu=="0"):
             #Salir
@@ -231,23 +345,24 @@ while (True):
                    
       
     elif(pokeMenu==2):
-        counter=1
-        for i in lista:
-            if counter==1:
-                i.menuDueloPokemon()
-            counter+=1
-        else:
-            continue
 
+        menuDueloPokemon()
+
+        
 
 
     elif(pokeMenu==0):
-        #Salir
-        break
+
+        print("Maestro 1: ",dueloNombreMaestro1)
+        print("Maestro 2: ",dueloNombreMaestro2)
+        print("Pokemon 1",dueloNombrePokemon1)
+        print("Pokemon 2:",dueloNombrePokemon2)
+        print(len(dueloNombrePokemon1))
+        print(len(dueloNombrePokemon2))
+        
 
 
-
-
+        
 
 if __name__ == '__main__':
     get_pokemon_data1(url1)
