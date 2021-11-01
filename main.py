@@ -50,7 +50,6 @@ dueloLista2=Pokemon(id2,name2,abilitie2,type2,randAtaque2,6,7)
 nomentrenador1=datosDuelo(loko1,name1)
 nomentrenador2=datosDuelo(loko2, name2)
 
-
 #def get_pokemon_data1(url='https://pokeapi.co/api/v2/pokemon/'+varia):
 def get_pokemon_data1(url):
     pokemon1_id=[]
@@ -260,6 +259,104 @@ def menuDueloPokemon():
         cvarDueloAtaque2=str(dueloLista2.pAtaque)
         cvarDueloDebilidad2=str(dueloLista2.debilidad)
         cvarDueloFortaleza2=str(dueloLista2.fortaleza)
+        
+        
+        #print(random.choices(lista1))
+        
+        normal2  =tipoNormal(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        fighting2=tipoLucha(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        flying2  =tipoVolador(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        poison2  =tipoVeneno(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        ground2  =tipoTierra(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        rock2    =tipoRoca(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        bug2     =tipoBicho(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        ghost2   =tipoFantasma(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        steel2   =tipoHierro(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        fire2    =tipoFuego(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        water2   =tipoAgua(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        grass2   =tipoHierva(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        electric2=tipoElectrico(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        psychic2 =tipoPsiquico(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        ice2     =tipoHielo(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        dragon2  =tipoDragon(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        dark2    =tipoDark(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        fairy2   =tipoHada(cvarDueloID2,cvarDueloNombrePokemon2, cvarDueloHabilidad2,cvarDueloTipo2,cvarDueloAtaque2, cvarDueloDebilidad2,cvarDueloFortaleza2, rd.choices(dueloLista2.abilities))
+        
+        normal1  =tipoNormal(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        fighting1=tipoLucha(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        flying1  =tipoVolador(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        poison1  =tipoVeneno (cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        ground1  =tipoTierra(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        rock1    =tipoRoca(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        bug1     =tipoBicho(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        ghost1   =tipoFantasma(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        steel1   =tipoHierro(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        fire1    =tipoFuego (cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        water1   =tipoAgua(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        grass1   =tipoHierva(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        electric1=tipoElectrico(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        psychic1 =tipoPsiquico(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        ice1     =tipoHielo(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        dragon1  =tipoDragon(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        dark1    =tipoDark(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        fairy1   =tipoHada(cvarDueloID2,cvarDueloNombrePokemon1, cvarDueloHabilidad1,cvarDueloTipo1,cvarDueloAtaque1, cvarDueloDebilidad1,cvarDueloFortaleza1, rd.choices(dueloLista1.abilities))
+        
+        
+        def herenciaFortaleza1():
+            
+            normal1.esquivarGhost()
+            fighting1.esquivarRock()
+            flying1.esquivarBug()
+            poison1.esquivarFlying()
+            ground1.esquivarElectric()
+            rock1.esquivarFighting()
+            bug1.esquivarGround()
+            ghost1.esquivarNormal()
+            steel1.esquivarVeneno()
+            fire1.esquivarfairy()
+            water1.esquivarFuego()
+            grass1.esquivarAgua()
+            electric1.esquivarSteel()
+            psychic1.esquivarDark()
+            ice1.esquivarHielo()
+            dragon1.esquivarHierba()
+            dark1.esquivarPsiquico()
+            fairy1.esquivarDragon()
+            
+        def herenciaFortaleza2():
+            
+            normal2.esquivarGhost()
+            fighting2.esquivarRock()
+            flying2.esquivarBug()
+            poison2.esquivarFlying()
+            ground2.esquivarElectric()
+            rock2.esquivarFighting()
+            bug2.esquivarGround()
+            ghost2.esquivarNormal()
+            steel2.esquivarVeneno()
+            fire2.esquivarfairy()
+            water2.esquivarFuego()
+            grass2.esquivarAgua()
+            electric2.esquivarSteel()
+            psychic2.esquivarDark()
+            ice2.esquivarHielo()
+            dragon2.esquivarHierba()
+            dark2.esquivarPsiquico()
+            fairy2.esquivarDragon()             
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         if coin1==999: #Si gana el entrenador 1
             begin=int(input("Presione la tecla 1 para comenzar el ataque"))
             if begin==1:
@@ -273,39 +370,108 @@ def menuDueloPokemon():
                             if input:
                                 print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_1_1} puntos de daño")
                                 dueloLista2.health=dueloLista2.health-random1_1_1
+                                herenciaFortaleza1()
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 
                             input("MAESTRO 2: Presione una tecla para ATACAR")
                             if input:
                                 print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_1_2} puntos de daño")
                                 dueloLista1.health=dueloLista1.health-random1_1_2
+                                herenciaFortaleza2()
                                                                   
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
                                 time.sleep(3)
                                 break    
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                 else:
                         while dueloLista1.health >=1 or dueloLista2.health >=1:
                             random1_2_1=int(rd.randint(5,33))
                             random1_2_2=int(rd.randint(5,33))
+                                           
+    
                             
                             input("MAESTRO 1: Presione una tecla para ATACAR")
                             if input:
                                 print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_2_1} puntos de daño")
                                 dueloLista1.health=dueloLista1.health-random1_2_1
                                 
+                                herenciaFortaleza2()
+                                
+                                
+                                
                             input("MAESTRO 2: Presione una tecla para ATACAR")
                             if input:
                                 print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_2_2} puntos de daño")
                                 dueloLista2.health=dueloLista2.health-random1_2_2
+                                herenciaFortaleza1()
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
                                                                   
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
                                 time.sleep(3)
                                 break    
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         
         elif coin2==999: #Si gana el entrenador 2
             begin=int(input("Presione la tecla 1 para comenzar el ataque"))
@@ -321,22 +487,65 @@ def menuDueloPokemon():
                         if input:
                             print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_1_1} puntos de daño")
                             dueloLista2.health=dueloLista2.health-random2_1_1
+                            
+                            
+                            herenciaFortaleza1()
+                            
+                            
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
                                 time.sleep(3)
                                 break    
                                 
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                         input("MAESTRO 1: Presione una tecla para ATACAR")
                         if input:
                             print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_1_2} puntos de daño")
                             dueloLista1.health=dueloLista1.health-random2_1_2
+                                                                  
+                            herenciaFortaleza2()                                    
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
                                                                   
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
                                 time.sleep(3)
                                 break    
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                 elif select2==1:
@@ -348,16 +557,50 @@ def menuDueloPokemon():
                         if input:
                             print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_2_1} puntos de daño")
                             dueloLista1.health=dueloLista1.health-random2_2_1
+                            
+                            herenciaFortaleza2()
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
                                 time.sleep(3)
                                 break    
                                                       
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
                         input("MAESTRO 1: Presione una tecla para ATACAR")
                         if input:
                             print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_2_2} puntos de daño")
                             dueloLista2.health=dueloLista2.health-random2_2_2
+                            herenciaFortaleza1()
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
                                                                   
                         if dueloLista1.health <=0 or dueloLista2.health <=0:    
                             print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
