@@ -76,8 +76,6 @@ class tipoNormal(Pokemon): #1
         if self.tipo == "ghost":
             print("Tipo1: ",self.tipo)
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado GHOST")
-        else:
-            print("Aqui no paso naa")
     
         
 
@@ -89,8 +87,7 @@ class tipoLucha(Pokemon): #2
         if self.tipo == "rock":
 
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado ROCK")
-        else:
-            print("Aqui no paso naa")
+
         
 class tipoVolador(Pokemon): #3
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, AeroBlast):
@@ -100,9 +97,7 @@ class tipoVolador(Pokemon): #3
         if self.tipo == "bug":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado INSECTO")
-        else:
-            print("Aqui no paso naa")    
-        
+
 
 class tipoVeneno(Pokemon): #4
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, PoisonSting):
@@ -112,8 +107,7 @@ class tipoVeneno(Pokemon): #4
         if self.tipo == "flying" :
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado VOLADOR")
-        else:
-            print("Aqui no paso naa")    
+ 
         
 class tipoTierra(Pokemon): #5
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, EarthQuake):
@@ -123,8 +117,7 @@ class tipoTierra(Pokemon): #5
         if self.tipo == "electric":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado ELECTRIC")
-        else:
-            print("Aqui no paso naa")    
+  
         
 class tipoRoca(Pokemon): #6
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, DiamondStorm):
@@ -134,8 +127,7 @@ class tipoRoca(Pokemon): #6
         if self.tipo == "fighting":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado FIGHTING")
-        else:
-            print("Aqui no paso naa")    
+ 
         
 class tipoBicho(Pokemon): #7
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, SpiderWeb):
@@ -145,8 +137,7 @@ class tipoBicho(Pokemon): #7
         if self.tipo == "ground":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado GROUND")
-        else:
-            print("Aqui no paso naa")    
+  
         
 class tipoFantasma(Pokemon): #8
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Nightmare):
@@ -156,8 +147,7 @@ class tipoFantasma(Pokemon): #8
         if self.tipo == "normal":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado NORMAL")
-        else:
-            print("Aqui no paso naa")    
+
         
 class tipoHierro(Pokemon): #9
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, MetalClaw):
@@ -167,8 +157,7 @@ class tipoHierro(Pokemon): #9
         if self.tipo == "poison":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado POISON")
-        else:
-            print("Aqui no paso naa")    
+ 
 
 class tipoFuego(Pokemon): #10
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, RafagaFuego):
@@ -178,8 +167,7 @@ class tipoFuego(Pokemon): #10
         if self.tipo == "fairy":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado FAIRY")
-        else:
-            print("Aqui no paso naa")    
+
 
 class tipoAgua(Pokemon): #11
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, hidroBomba):
@@ -189,8 +177,7 @@ class tipoAgua(Pokemon): #11
         if self.tipo == "fire":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado FUEGO")
-        else:
-            print("Aqui no paso naa")    
+ 
         
 
 class tipoHierva(Pokemon): #12
@@ -201,8 +188,7 @@ class tipoHierva(Pokemon): #12
         if self.tipo == "water":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado AGUA")
-        else:
-            print("Aqui no paso naa")          
+        
                 
 class tipoElectrico(Pokemon): #13
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Thunderbolt):
@@ -212,8 +198,7 @@ class tipoElectrico(Pokemon): #13
         if self.tipo == "steel":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado HIERRO")
-        else:
-            print("Aqui no paso naa")    
+   
         
 class tipoPsiquico(Pokemon): #14
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Hypnosis):
@@ -223,8 +208,7 @@ class tipoPsiquico(Pokemon): #14
         if self.tipo == "dark":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado DARK")
-        else:
-            print("Aqui no paso naa")    
+   
         
 class tipoHielo(Pokemon): #15
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Avalanche):
@@ -234,8 +218,7 @@ class tipoHielo(Pokemon): #15
         if self.tipo == "ice":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado HIELO")
-        else:
-            print("Aqui no paso naa")    
+    
 class tipoDragon(Pokemon): #16
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Twister):
         super().__init__(identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza)
@@ -244,8 +227,7 @@ class tipoDragon(Pokemon): #16
         if self.tipo == "grass":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado HIERBA")
-        else:
-            print("Aqui no paso naa")    
+   
         
 class tipoDark(Pokemon): #17
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, NightSlash):
@@ -255,8 +237,7 @@ class tipoDark(Pokemon): #17
         if self.tipo == "dark":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado DARK")
-        else:
-            print("Aqui no paso naa")    
+   
         
 class tipoHada(Pokemon): #18
     def __init__(self,identificadorPokemon,nombrePokemon,abilities,tipoPokemon,pAtaque,debilidad,fortaleza, Moonlight):
@@ -266,6 +247,4 @@ class tipoHada(Pokemon): #18
         if self.tipo == "dragon":
             
             print(f"El pokemon {self.nombre} del tipo {self.tipo} ha esquivado DRAGON")
-        else:
-            print("Aqui no paso naa")    
-        
+

@@ -6,6 +6,7 @@ import os
 import time
 from functions import *
 import random as rd
+import sys
 
 rand1=rd.randint(1,400)
 varia1=str(rand1)
@@ -178,15 +179,22 @@ lista=[
     Pokemon(id2, name2, abilitie2,type2,randAtaque2,10,100)
     ]
 
+log1=[]
+log2=[]
 
-
+mov1=int(0)
+mov2=int(0)
 def menuDueloPokemon():
+        global mov1
+        global mov2
         os.system("cls")
         maestro1=input(f"Ingrese nombre de maestro Pokemon N°1:  ")
         os.system("cls")
         maestro2=input(f"Ingrese nombre de maestro Pokemon N°2:  ")
         nomentrenador1.loko1=maestro1
         nomentrenador2.loko2=maestro2
+        log1.append(maestro1)
+        log2.append(maestro2)
 
         os.system("cls")   
         print("Sorteo elección de Pokemon y comienzo de partida:\n")
@@ -214,11 +222,12 @@ def menuDueloPokemon():
             opcMenu=int(input())
                 
             if (opcMenu==1):
-                print(f"El entrenador N°1 {nomentrenador1.loko1} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}" )     
+                print(f"El entrenador N°1 {nomentrenador1.loko1} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}" )
+                log1.append(str(dueloLista1.nombre[0][0]))     
                 
             elif (opcMenu==2):
                 print(f"El entrenador N°1 {nomentrenador1.loko1} ha elegido el Pokemon : {str(dueloLista2.nombre[0][0])} del tipo {str(dueloLista2.tipo[0][0])}")
-                          
+                log1.append(str(dueloLista2.nombre[0][0]))           
                 
         else:
             
@@ -234,11 +243,13 @@ def menuDueloPokemon():
             if (opcMenu==1):
                 global select1
                 print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista1.nombre[0][0])} del tipo {str(dueloLista1.tipo[0][0])}")
+                log2.append(str(dueloLista1.nombre[0][0])) 
                 select1=1
                 
             elif (opcMenu==2):
                 global select2
                 print(f"El entrenador N°2 {nomentrenador2.loko2} ha elegido el Pokemon : {str(dueloLista2.nombre[0][0])} del tipo {str(dueloLista2.tipo[0][0])}")
+                log2.append(str(dueloLista2.nombre[0][0])) 
                 select2=1
                 
             
@@ -259,6 +270,8 @@ def menuDueloPokemon():
         cvarDueloAtaque2=str(dueloLista2.pAtaque)
         cvarDueloDebilidad2=str(dueloLista2.debilidad)
         cvarDueloFortaleza2=str(dueloLista2.fortaleza)
+        
+
         
         
         #print(random.choices(lista1))
@@ -343,20 +356,7 @@ def menuDueloPokemon():
             dragon2.esquivarHierba()
             dark2.esquivarPsiquico()
             fairy2.esquivarDragon()             
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         if coin1==999: #Si gana el entrenador 1
             begin=int(input("Presione la tecla 1 para comenzar el ataque"))
             if begin==1:
@@ -366,113 +366,66 @@ def menuDueloPokemon():
                             random1_1_1=int(rd.randint(5,33))
                             random1_1_2=int(rd.randint(5,33))
                             
-                            input("MAESTRO 1: Presione una tecla para ATACAR")
+                            input("MAESTRO 1: Presione una tecla para ATACAR \n \n")
                             if input:
                                 print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_1_1} puntos de daño")
                                 dueloLista2.health=dueloLista2.health-random1_1_1
+                                mov1=mov1+1
+                                log1.append(random1_1_1)
                                 herenciaFortaleza1()
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            input("MAESTRO 2: Presione una tecla para ATACAR")
-                            if input:
-                                print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_1_2} puntos de daño")
-                                dueloLista1.health=dueloLista1.health-random1_1_2
-                                herenciaFortaleza2()
-                                                                  
+   
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                                time.sleep(3)
-                                break    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+                                break
+                   
+
+                            input("MAESTRO 2: Presione una tecla para ATACAR \n \n")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_1_2} puntos de daño")
+                                dueloLista1.health=dueloLista1.health-random1_1_2
+                                mov2=mov2+1
+                                log2.append(random1_1_2)                                
+                                herenciaFortaleza2()
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+
+                                break
+       
+     
                 else:
                         while dueloLista1.health >=1 or dueloLista2.health >=1:
                             random1_2_1=int(rd.randint(5,33))
                             random1_2_2=int(rd.randint(5,33))
-                                           
-    
-                            
-                            input("MAESTRO 1: Presione una tecla para ATACAR")
+                        
+                            input("MAESTRO 1: Presione una tecla para ATACAR \n \n")
                             if input:
                                 print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random1_2_1} puntos de daño")
                                 dueloLista1.health=dueloLista1.health-random1_2_1
-                                
+                                mov2=mov2+1
+                                log1.append(random1_2_1)      
                                 herenciaFortaleza2()
-                                
-                                
-                                
-                            input("MAESTRO 2: Presione una tecla para ATACAR")
-                            if input:
-                                print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_2_2} puntos de daño")
-                                dueloLista2.health=dueloLista2.health-random1_2_2
-                                herenciaFortaleza1()
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
                             if dueloLista1.health <=0 or dueloLista2.health <=0:    
                                 print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                                 print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                                time.sleep(3)
-                                break    
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                        
+
+                                break
+                                
+                            input("MAESTRO 2: Presione una tecla para ATACAR \n \n")
+                            if input:
+                                print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random1_2_2} puntos de daño")
+                                dueloLista2.health=dueloLista2.health-random1_2_2
+                                mov1=mov1+1
+                                log1.append(random1_2_2)
+                                herenciaFortaleza1()
+                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+
+                                break
+    
         elif coin2==999: #Si gana el entrenador 2
             begin=int(input("Presione la tecla 1 para comenzar el ataque"))
 
@@ -482,132 +435,75 @@ def menuDueloPokemon():
                     while dueloLista1.health >=1 or dueloLista2.health >=1:
                         random2_1_1=int(rd.randint(5,33))
                         random2_1_2=int(rd.randint(5,33))
-                        input("MAESTRO 2: Presione una tecla para ATACAR")
-                        print("PRINT 2-1")
+                        input("MAESTRO 2: Presione una tecla para ATACAR \n \n")
                         if input:
                             print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_1_1} puntos de daño")
                             dueloLista2.health=dueloLista2.health-random2_1_1
-                            
-                            
+                            mov1=mov1+1
+                            log2.append(random2_1_1)                          
                             herenciaFortaleza1()
-                            
-                            
-                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
-                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
-                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                                time.sleep(3)
-                                break    
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                        input("MAESTRO 1: Presione una tecla para ATACAR")
+                        if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                            print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                            print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+
+                            break
+                        
+                        input("MAESTRO 1: Presione una tecla para ATACAR \n \n")
                         if input:
                             print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_1_2} puntos de daño")
                             dueloLista1.health=dueloLista1.health-random2_1_2
-                                                                  
+                            mov1=mov1+1
+                            log1.append(random2_1_2)                                                                 
                             herenciaFortaleza2()                                    
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
-                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
-                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                                time.sleep(3)
-                                break    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                        if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                            print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                            print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+
+                            break
                         
                 elif select2==1:
                     while dueloLista1.health >=1 or dueloLista2.health >=1:
                         random2_2_1=int(rd.randint(5,33))
                         random2_2_2=int(rd.randint(5,33))
-                        input("MAESTRO 2: Presione una tecla para ATACAR")
-                        print("PRINT2-2")
+                        input("MAESTRO 2: Presione una tecla para ATACAR \n \n")
                         if input:
                             print(f"{cvarDueloNombrePokemon2} ha atacado a {cvarDueloNombrePokemon1} con {cvarDueloHabilidad2} , causándole {random2_2_1} puntos de daño")
                             dueloLista1.health=dueloLista1.health-random2_2_1
-                            
+                            mov2=mov2+1
+                            log2.append(random2_2_1)        
                             herenciaFortaleza2()
-                            if dueloLista1.health <=0 or dueloLista2.health <=0:    
-                                print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
-                                print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                                time.sleep(3)
-                                break    
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                        input("MAESTRO 1: Presione una tecla para ATACAR")
-                        if input:
-                            print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_2_2} puntos de daño")
-                            dueloLista2.health=dueloLista2.health-random2_2_2
-                            herenciaFortaleza1()
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                                  
                         if dueloLista1.health <=0 or dueloLista2.health <=0:    
                             print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
                             print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
-                            time.sleep(3)
-                            break    
 
+                            break
+                        
+                        input("MAESTRO 1: Presione una tecla para ATACAR \n \n")
+                        if input:
+                            print(f"{cvarDueloNombrePokemon1} ha atacado a {cvarDueloNombrePokemon2} con {cvarDueloHabilidad1} , causándole {random2_2_2} puntos de daño")
+                            dueloLista2.health=dueloLista2.health-random2_2_2
+                            mov1=mov1+1
+                            log1.append(random2_2_2)
+                            herenciaFortaleza1()
+                        if dueloLista1.health <=0 or dueloLista2.health <=0:    
+                            print(f"Se ha acabado {cvarDueloNombrePokemon1}: Health: {dueloLista1.health} ")
+                            print(f"Se ha acabado {cvarDueloNombrePokemon2}: Health: {dueloLista2.health} ")
+   
+                            break
+                      
+
+def mostrarLog():
+    
+    
+    print("======PANEL DE LOGS========")
+
+    
+    print (f"1) Nombre Maestro Pokemon 1: {str(log1[0])} \n2) Pokemon 1:  {str(log1[1])} \n3) Movimientos realizados:  {str(mov1)} \n4) Mariación puntos Vida  {str(log1[2:])}\n\n\n")
+    
+    print (f"1) Nombre Maestro Pokemon 2: {str(log2[0])} \n2) Pokemon 2:  {str(log2[1])} \n3) Movimientos realizados:  {str(mov2)} \n4) Mariación puntos Vida  {str(log2[2:])}\n\n\n")
+ 
+ 
+     
 
 os.system("cls")    
 while (True):
@@ -616,6 +512,7 @@ while (True):
     print("\nSeleccione una de las tareas a realizar:")
     print("1) Pokedex")
     print("2) Duelo Pokemon")
+    print("3) Estadísticas de Batalla \n")
     print("0) Salir \n")
     
 
@@ -689,17 +586,15 @@ while (True):
         menuDueloPokemon()
 
         
-
+    elif(pokeMenu==3):
+        mostrarLog()
 
     elif(pokeMenu==0):
-
-        print("Maestro 1: ",dueloNombreMaestro1)
-        print("Maestro 2: ",dueloNombreMaestro2)
-        print("Pokemon 1",dueloNombrePokemon1)
-        print("Pokemon 2:",dueloNombrePokemon2)
-        print(len(dueloNombrePokemon1))
-        print(len(dueloNombrePokemon2))
-        
+        print("GRACIAS POR JUGAR")
+        time.sleep(2)
+        sys.exit()
+    else:
+        print("Comando incorrecto. Reintente....")
 
 
         
@@ -710,4 +605,3 @@ if __name__ == '__main__':
     get_pokemon_data1(url2)
     print(get_pokemon_data1(url2)) 
     
-
