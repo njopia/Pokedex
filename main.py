@@ -504,7 +504,6 @@ def mostrarLog():
  
  
      
-
 os.system("cls")    
 while (True):
 
